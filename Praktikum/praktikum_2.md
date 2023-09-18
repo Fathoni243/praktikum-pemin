@@ -10,9 +10,8 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 
 ## Langkah Percobaan
 * ### MongoDB Compass
-    1. Melakukan koneksi ke MongoDB menggunakan connection string ``` mongodb://localhost:27017 ``` secara lokal.
-    2. Membuat Database bookstore dengan melakukan klik "Create Database"
-    3. Insert data buku pertama dengan melakukan klik "Add Data", pilih "Insert Document", isi data dengan data yang diinginkan, lalu klik "insert"
-    > [!WARNING] <br />
-    > MongoDB akan membuat nilai _id secara otomatis
+    a. Melakukan koneksi ke MongoDB menggunakan connection string ``` mongodb://localhost:27017 ``` secara lokal. <br />
+    b. Membuat Database bookstore dengan melakukan klik "Create Database" <br />
+    c. Insert data buku pertama dengan melakukan klik "Add Data", pilih "Insert Document", isi data dengan data yang diinginkan, lalu klik "insert" <br />
+    > :warning: **MongoDB akan membuat nilai _id secara otomatis**
 
