@@ -22,5 +22,7 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 
 ## :scroll: Langkah Percobaan
 ### Instalasi NODE JS
-> :information_source: **Disini saya sudah melakukan instalasi NODE JS, jika belum melakukan instalasi harap mendownload node setup di https://nodejs.org/en dan menjalankannya.**
+<!-- > :information_source: **NOTE : Disini saya sudah melakukan instalasi NODE JS, jika belum melakukan instalasi harap mendownload node setup di https://nodejs.org/en dan menjalankannya.** -->
+> [!NOTE]
+> Disini saya sudah melakukan instalasi NODE JS, jika belum melakukan instalasi harap mendownload node setup di https://nodejs.org/en dan menjalankannya.
 1. Setelah instalasi NodeJS selesai, jalankan command ```node -v``` untuk memeriksa apakah NodeJS sudah terinstall dan menampilkan versi NodeJS
