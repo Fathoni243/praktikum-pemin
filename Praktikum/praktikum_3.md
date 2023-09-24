@@ -41,13 +41,26 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 ### Koneksi Express ke MongoDB
 1. Membuat file index.js pada root folder, lalu memasukkan script seperti pada gambar dan mencoba menjalankannya dengan command ```node index.js```
 ![create index.js and running file](../Screenshot/praktikum_3/5_create_indexJs.png)
-2. Membuat file .env dan memasukkan script pada file .env seperti pada gambar, lalu merubah listening port dengan mengambil PORT dari file .env, untuk lebih jelasnya bisa dilihat pada gambar dibawah ini. Setelah itu coba dijalankan lagi.
-> [!NOTE]
-> maka akan terjadi perubahan PORT yang awalnya 8000 menjadi 5000 sesuai dengan value dari PORT yang ada di file .env
+
+2. Membuat file **.env** dan memasukkan script pada file **.env** seperti pada gambar, lalu merubah listening port dengan mengambil PORT dari file **.env**, untuk lebih jelasnya bisa dilihat pada gambar dibawah ini. Setelah itu coba dijalankan lagi.
 ![create .env](../Screenshot/praktikum_3/6_env_listeningPort.png)
+> [!IMPORTANT]
+> maka akan terjadi perubahan PORT yang awalnya 8000 menjadi 5000 sesuai dengan value dari PORT yang ada di file .env
 
+3. menambahkan ```MONGO_URI``` pada file **.env** dan isi value nya dengan connection string yang terdapat pada MongoDB Compass. Lalu tambahkan baris kode di file **index.js** seperti pada gambar di bawah.
+![connection string mongoDB Compass](../Screenshot/praktikum_3/7_MongoURI_dbConnect.png)
+> [!IMPORTANT]
+> Saat dijalankan, seharusnya terdapat "Mongo connected" pada console log
 
+### Pembuatan routing 
+1. Membuat direktori routes, lalu buat file **book.route.js** serta mengisikan kode untuk fungsi getAllBooks, getOneBook, createBook, updateBook, dan deleteBook seperti pada gambar dibawah.
+![create folder routes](../Screenshot/praktikum_3/8_createRoutes_addEndpoint.png)
 
+2. Melakukan import **book.route.js** dan menambahkan kode 
+``` 
+const bookRoutes = require('./routes/book.route');
 
-
-
+app.use('/books', bookRoutes);
+```
+    untuk membuat routing pada endpoint books dengan ```/books``` di awal url
+![add Routes in index](../Screenshot/praktikum_3/9_addRoutesInIndex.png)
