@@ -56,11 +56,16 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 1. Membuat direktori routes, lalu buat file **book.route.js** serta mengisikan kode untuk fungsi getAllBooks, getOneBook, createBook, updateBook, dan deleteBook seperti pada gambar dibawah.
 ![create folder routes](../Screenshot/praktikum_3/8_createRoutes_addEndpoint.png)
 
-2. Melakukan import **book.route.js** dan menambahkan kode 
+2. Melakukan import **book.route.js** pada file index.js dan menambahkan kode : 
 ``` 
 const bookRoutes = require('./routes/book.route');
 
 app.use('/books', bookRoutes);
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kode tersebut untuk membuat routing pada endpoint books dengan ```/books``` di awal url, untuk code lebih jelas bisa dilihat pada gambar dibawah.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../Screenshot/praktikum_3/9_addRoutesInIndex.png" alt="add Routes in index" width="800"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kode tersebut untuk membuat routing pada endpoint books dengan ```/books``` di awal url.<br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../Screenshot/praktikum_3/9_addRoutesInIndex.png" alt="add Routes in index" width="600"/>
+
+3. Menguji salah satu endpoint dengan Postman. <br />
+<img src="../Screenshot/praktikum_3/10_tesEndpointRoutes.png" alt="tes postman" width="600"/>
+
