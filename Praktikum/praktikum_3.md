@@ -62,5 +62,5 @@ const bookRoutes = require('./routes/book.route');
 
 app.use('/books', bookRoutes);
 ```
-    untuk membuat routing pada endpoint books dengan ```/books``` di awal url
+untuk membuat routing pada endpoint books dengan ```/books``` di awal url, untuk code lebih jelas bisa dilihat pada gambar dibawah.
 ![add Routes in index](../Screenshot/praktikum_3/9_addRoutesInIndex.png)
