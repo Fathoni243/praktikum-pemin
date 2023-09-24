@@ -67,5 +67,78 @@ app.use('/books', bookRoutes);
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../Screenshot/praktikum_3/9_addRoutesInIndex.png" alt="add Routes in index" width="600"/>
 
 3. Menguji salah satu endpoint dengan Postman. <br />
-<img src="../Screenshot/praktikum_3/10_tesEndpointRoutes.png" alt="tes postman" width="600"/>
+![tes postman](../Screenshot/praktikum_3/10_tesEndpointRoutes.png)
+
+### Pembuatan controller
+1. Membuat direktori controllers, lalu buat file **book.controller.js** serta mengisikan kode untuk fungsi getAllBooks, getOneBook, createBook, updateBook, dan deleteBook seperti pada gambar di bawah.
+![create controller](../Screenshot/praktikum_3/11_addController.png)
+
+2. Melakukan import **book.controller.js** pada file book.route.js, serta melakukan perubahan pada fungsi getAllBooks, getOneBook, createBook, updateBook, dan deleteBook seperti pada gambar yang ada di bawah.
+![update code routes](../Screenshot/praktikum_3/12_editRoutes.png)
+
+3. Melakukan pengujian kembali pada Postman dengan endpoint yang sama dan pastikan response tetap sama
+![tes postman](../Screenshot/praktikum_3/13_tesEndpointController.png)
+
+### Pembuatan model
+variable | tipe data |
+--- | --- |
+title | string |
+author | string |
+year | number |
+pages | number |
+summary | string |
+publisher | string |
+1. Membuat direktori models, lalu buat file **book.model.js** serta mengisikan baris kode sesuai dengan tabel di atas, untuk lebih jelasnya bisa dilihat pada gambar.
+![tes postman](../Screenshot/praktikum_3/14_createModel.png)
+
+### Operasi CRUD
+1. Menghapus semua data pada collection books yang sudah dibuat di praktikum sebelumnya.
+![delete collection](../Screenshot/praktikum_3/15_deleteData.png)
+
+2. Import **book.model.js** pada file **book.controller.js**, lalu rubah fungsi createBook seperti pada gambar di bawah.
+![update code for CreateData](../Screenshot/praktikum_3/16_ImportAndUpdateCreateData.png)
+
+3. Eksekusi endpoint untuk create buku dengan mengisikan dua data buku dengan data di bawah ini menggunakan Postman : 
+```
+{
+    "title": "Dilan 1990",
+    "author": "Pidi Baiq",
+    "year": 2014,
+    "pages": 332,
+    "summary": "Mirea, anata wa utsukushī",
+    "publisher": "Pastel Books"
+}
+```
+```
+{
+    "title": "Dilan 1991",
+    "author": "Pidi Baiq",
+    "year": 2015,
+    "pages": 344,
+    "summary": "Watashi ga kare o aishite iru to ittara",
+    "publisher": "Pastel Books" 
+}
+```
+![Tes endpoint create data in postman](../Screenshot/praktikum_3/17_PostData1.png)
+![Tes create data in postman](../Screenshot/praktikum_3/18_PostData2.png)
+
+4. Melakukan perubahan pada fungsi getAllBooks dan getOneBook di controller seperti pada gambar dibawah.
+![update script getAllData](../Screenshot/praktikum_3/19_UpdateGetData.png)
+
+5. Eksekusi endpoint untuk menampilkan semua data buku dan menampilkan satu data buku.
+![Tes endpoint get all data](../Screenshot/praktikum_3/20_TesGetAllData.png)
+![Tes endpoint get one data](../Screenshot/praktikum_3/21_TesGetOneData.png)
+
+6. Melakukan perubahan pada fungsi updateBook di controller seperti pada gambar di bawah.
+![update script updateBook](../Screenshot/praktikum_3/22_UpdateScriptUpdate.png)
+
+7. Eksekusi endpoint untuk update buku Dilan 1991 menjadi ```<NAMA PANGGILAN> 1991``` 
+![Tes endpoint update buku](../Screenshot/praktikum_3/23_TesUpdateData.png)
+
+8. Melakukan perubahan pada fungsi deleteBook di controller seperti pada gambar di bawah.
+![update script deleteBook](../Screenshot/praktikum_3/24_UpdateScriptDelete.png)
+
+9. Eksekusi endpoint untuk delete buku Dilan 1990
+![Tes endpoint delete buku](../Screenshot/praktikum_3/25_TesDeleteData.png)
+
 
