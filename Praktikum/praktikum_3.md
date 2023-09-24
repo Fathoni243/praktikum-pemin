@@ -26,3 +26,28 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 > [!NOTE]
 > Disini saya sudah melakukan instalasi NODE JS, jika belum melakukan instalasi harap mendownload node setup di https://nodejs.org/en.
 1. Setelah instalasi NodeJS selesai, jalankan command ```node -v``` untuk memeriksa apakah NodeJS sudah terinstall dan menampilkan versi NodeJS
+![Cek version NodeJS](../Screenshot/praktikum_3/1_check_node.png)
+
+### Inisiasi project Express dan pemasangan package
+1. Membuat folder dengan nama express-mongodb dan buka lewat tekx editor VS Code
+![Create folder express-mongodb](../Screenshot/praktikum_3/2_create_folder.png)
+
+2. Melakukan npm init untuk menggenerate file package.json dengan command ```npm init -y```
+![npm init](../Screenshot/praktikum_3/3_npm_init.png)
+
+3. Melakukan instalasi express, mongoose, dan dotenv dengan command ```npm i express mongoose dotenv```
+![instalasi express, mongoose, dan dotenv](../Screenshot/praktikum_3/4_installExpress,mongoose,env.png)
+
+### Koneksi Express ke MongoDB
+1. Membuat file index.js pada root folder, lalu memasukkan script seperti pada gambar dan mencoba menjalankannya dengan command ```node index.js```
+![create index.js and running file](../Screenshot/praktikum_3/5_create_indexJs.png)
+2. Membuat file .env dan memasukkan script pada file .env seperti pada gambar, lalu merubah listening port dengan mengambil PORT dari file .env, untuk lebih jelasnya bisa dilihat pada gambar dibawah ini. Setelah itu coba dijalankan lagi.
+![create .env](../Screenshot/praktikum_3/6_env_listeningPort.png)
+> [!NOTE]
+> maka akan terjadi perubahan PORT yang awalnya 8000 menjadi 5000 sesuai dengan value dari PORT yang ada di file .env
+
+
+
+
+
+
