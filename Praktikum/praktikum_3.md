@@ -42,9 +42,9 @@ Disini kumpulan code dan foto hasil Screenshot penerapan praktikum saya di modul
 1. Membuat file index.js pada root folder, lalu memasukkan script seperti pada gambar dan mencoba menjalankannya dengan command ```node index.js```
 ![create index.js and running file](../Screenshot/praktikum_3/5_create_indexJs.png)
 2. Membuat file .env dan memasukkan script pada file .env seperti pada gambar, lalu merubah listening port dengan mengambil PORT dari file .env, untuk lebih jelasnya bisa dilihat pada gambar dibawah ini. Setelah itu coba dijalankan lagi.
-![create .env](../Screenshot/praktikum_3/6_env_listeningPort.png)
 > [!NOTE]
 > maka akan terjadi perubahan PORT yang awalnya 8000 menjadi 5000 sesuai dengan value dari PORT yang ada di file .env
+![create .env](../Screenshot/praktikum_3/6_env_listeningPort.png)
 
 
 
