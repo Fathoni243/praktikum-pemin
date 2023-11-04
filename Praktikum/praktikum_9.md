@@ -96,7 +96,7 @@ xxxxx.yyyyy.zzzzz
 
    <img src="../Screenshot/praktikum_9/2.png" alt="migrate:fresh" width="800"/>
 
-3. Menjalankan aplikasi pada endpoint /auth/register dengan body request seperti pada gambar dibawah.
+3. Menjalankan aplikasi pada endpoint `/auth/register` dengan body request seperti pada gambar dibawah.
 
    <img src="../Screenshot/praktikum_9/3.png" alt="execute endpoint" width="800"/>
 
@@ -106,17 +106,37 @@ xxxxx.yyyyy.zzzzz
 
    <img src="../Screenshot/praktikum_9/4.png" alt="add 3 function controller" width="800"/>
 
+   Penjelasan ketiga fungsi pada gambar : <br>
+
+   1. **base64url_encode(String $data): String**
+
+      Fungsi ini digunakan untuk mengubah data string menjadi bentuk URL-safe Base64. Pada tahap ini merupakan langkah pertama dalam menghasilkan payload dan header JWT. Fungsi ini memiliki parameter data string sebagai input.
+
+   2. **sign(String $header, String $payload, String $secret): String**
+
+      Fungsi ini digunakan untuk menghasilkan signature JWT dengan menggunakan HMAC SHA-256. Signature ini akan digunakan untuk memverifikasi integritas JWT. Fungsi ini menerima parameter header, payload, dan secret key sebagai input.
+
+   3. **jwt(array $header, array $payload, String $secret): String**
+
+      Fungsi ini adalah metode utama yang menghasilkan JWT lengkap. Return value dari fungsi ini adalah penggabungan header, payload, dan signature dengan karakter '.' untuk membentuk JWT yang siap digunakan.
+
 2. Melakukan perubahan dengan menambahkan beberapa kode pada fungsi login.
 
    <img src="../Screenshot/praktikum_9/5.png" alt="update login function" width="800"/>
+
+   Perubahan yang dilakukan adalah pemanggilan fungsi `jwt` untuk membuat JSON Web Token (JWT) dengan parameter pertama yang berisi informasi header JWT, parameter kedua berisi payload JWT, dan parameter yang ketiga adalah secret key yang digunakan untuk menghasilkan signature JWT. Hasil dari fungsi tersebut berupa JWT lengkap yang terdiri dari header, payload, dan signature yang disimpan kedalam variable `$jwt`. variable `$jwt` inilah yang akan digunakan untuk mengisi token user.
 
 3. Tambahkan keempat fungsi seperti pada gambar pada `Middleware/Authorization.php`
 
    <img src="../Screenshot/praktikum_9/6.png" alt="add 4 function" width="800"/>
 
+   Inti dari fungsi ini hampir sama dengan ketiga fungsi yang ada di dalam file `AuthController.php`, yang membedakan adalah terdapat fungsi untuk melakukan kebalikan dari `base64url_encode`, yaitu `base64url_decode` yang mengambil string Base64 dan dikembalikan menjadi data string asli. Serta terdapat fungsi `verify` untuk memeriksa apakah signature JWT yang diberikan cocok dengan signature yang dihasilkan dari header dan payload yang diberikan.
+
 4. Melakukan perubahan pada fungsi handle pada `Middleware/Authorization.php`
 
    <img src="../Screenshot/praktikum_9/7.png" alt="update handle function" width="800"/>
+
+   Perubahan yang dilakukan tersebut untuk memeriksa dan memverifikasi token yang dikirimkan oleh klien sebelum mengizinkan ke akses ke sumber daya terlindungi dengan memanfaatkan keempat fungsi yang sudah dibuat sebelumnya. Jika ada pelanggaran atau token tidak valid, maka respon dengan pesan kesalahan dan kode status yang sesuai akan dikirimkan kembali kepada klien.
 
 5. Menjalankan aplikasi pada endpoint `/auth/login` dengan body seperti pada gambar. Serta menyalin token yang didapat ke notepad.
 
@@ -125,6 +145,8 @@ xxxxx.yyyyy.zzzzz
 6. Menjalankan aplikasi pada endpoint `/home` dengan melampirkan nilai token yang sudah di salin ke notepad sebelumnya, dari yang didapat setelah login pada header.
 
    <img src="../Screenshot/praktikum_9/9.png" alt="execute endpoint home" width="800"/>
+
+   Response yang dikembalikan dalam endpoint `/home` tersebut adalah pesan sukses, yang berarti token jwt yang berada dalam Headers sudah sesuai dengan pengecekan di dalam file `Authorization`. Hal ini membuat token di headers yang awalnya didapat dari generate random string saja saat login, sekarang menggunakan token jwt yang keamanan datanya lebih terjaga.
 
 ### JWT Library
 
@@ -140,13 +162,19 @@ xxxxx.yyyyy.zzzzz
 
    <img src="../Screenshot/praktikum_9/12.png" alt="add function" width="800"/>
 
+   fungsi `generateJWT` tersebut digunakan untuk membuat token JWT menggubakan library Firebase JWT dengan payload yang sesuai dan mengonversinya ke dalam format string.
+
 4. Melakukan perubahan pada fungsi login menjadi seperti pada gambar.
 
    <img src="../Screenshot/praktikum_9/13.png" alt="update function login" width="800"/>
 
+   Merubah pembuatan JWT yang awalnya manual menggunakan fungsi `jwt` sekarang menjadi menggunakan library JWT dari Firebase JWT dengan fungsi `generateJWT`.
+
 5. Membuat file `JwtMiddleware.php` dan mengisikan baris code seperti pada gambar.
 
    <img src="../Screenshot/praktikum_9/14.png" alt="create file jwtMiddleware" width="800"/>
+
+   Fungsi dari `JwtMiddleware.php` ini adalah untuk memeriksa dan mendekode token JWT yang dikirimkan dalam permintaan, dan jika token valid, maka akan diizinkan ke sumber daya terlindungi dengan memberikan informasi pengguna ke permintaan. Jika ada masalah atau kesalahan dengan token, respon dengan pesan kesalahan yang sesuai akan dikirimkan sebagai tanggapan HTTP.
 
 6. Daftarkan middleware yang telah dibuat pada `bootstrap/app.php`
 
@@ -156,6 +184,8 @@ xxxxx.yyyyy.zzzzz
 
    <img src="../Screenshot/praktikum_9/16.png" alt="add routes" width="800"/>
 
+   Merubah middleware yang digunakan adalah `jwt.auth` (sesuai dengan nama middleware yang didaftarkan sebelumnya) pada routes `/home`.
+
 8. Menjalankan aplikasi pada endpoint `/auth/login` dengan request body seperti pada gambar dan menyalin token yang didapat ke notepad.
 
    <img src="../Screenshot/praktikum_9/17.png" alt="execute endpoint login" width="800"/>
@@ -163,3 +193,5 @@ xxxxx.yyyyy.zzzzz
 9. Menjalankan aplikasi pada endpoint `/home` dengan melampirkan nilai token yang sudah di salin ke notepad sebelumnya, dari yang didapat setelah login pada header.
 
    <img src="../Screenshot/praktikum_9/18.png" alt="execute endpoint home" width="800"/>
+
+   Hasilnya ini sama saja dengan menggunakan JWT manual sebelumnya, yang membedakan pada kasus ini adalah menggunakan JWT library dari Firebase yang sudah siap pakai.
